@@ -1,0 +1,71 @@
+<div class="main" [ngClass]="{'background-dark-mode':darkMode}">
+  <button routerLink="/allCountries" class="backToHomeBtn" [ngClass]="{'button-dark-mode':darkMode}">
+    <i class="fas fa-arrow-left"></i> Back To Home
+  </button>
+
+  <div class="countryInfo-container">
+    <div class="flag-section">
+      <img
+        src="{{ selectedCountryInfo?.flags?.svg }}"
+        alt="{{ selectedCountryInfo?.name.common }}"
+      />
+    </div>
+    <div class="country-info-section" [ngClass]="{'dark-mode':darkMode}">
+      <h2>{{ selectedCountryInfo?.name.common }}</h2>
+      <div class="country-info">
+        <section>
+          <p>
+            <strong>Native Name: </strong
+            >{{
+              selectedCountryInfo?.nativeName.common ||
+                selectedCountryInfo?.name.common
+            }}
+          </p>
+          <p>
+            <strong>Population: </strong>
+            {{ selectedCountryInfo?.population.toLocaleString() }}
+          </p>
+          <p><strong>Region: </strong>{{ selectedCountryInfo?.region }}</p>
+          <p>
+            <strong>Sub Region: </strong
+            >{{ selectedCountryInfo?.subregion || "NA" }}
+          </p>
+          <p>
+            <strong>Captial: </strong>{{ selectedCountryInfo?.capital || "NA" }}
+          </p>
+        </section>
+        <section>
+          <p>
+            <strong>Top Level Domain: </strong>{{ selectedCountryInfo?.tld }}
+          </p>
+          <p>
+            <strong>Currencies: </strong
+            >{{ selectedCountryInfo?.currency.name || "NA" }}
+          </p>
+          <p>
+            <strong>Languages: </strong
+            >{{ selectedCountryInfo?.countryLanguages || "NA" }}
+          </p>
+        </section>
+      </div>
+      <div class="border-countries">
+        <h4>Border Countries:</h4>
+        <ng-container
+          *ngIf="selectedCountryInfo?.borderCountries; else noBorderCountry"
+        >
+          <button
+            *ngFor="let country of selectedCountryInfo?.borderCountries"
+            [routerLink]="'/country/' + country.code"
+            (click)="showCountryInfo(country.code)"
+            [ngClass]="{'button-dark-mode':darkMode}"
+          >
+            {{ country.name }}
+          </button>
+        </ng-container>
+        <ng-template #noBorderCountry>
+          <h5 class="not-found">Not Available</h5>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

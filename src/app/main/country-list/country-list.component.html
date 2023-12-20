@@ -1,0 +1,15 @@
+<div class="countries-container">
+  <div *ngIf="filteredCountries.length > 0; else noCountry">
+    <!-- <ng-container *ngFor="let country of allCountries" > -->
+    <ng-container *ngFor="let country of filteredCountries">
+      <app-country
+        [country]="country"
+        [routerLink]="'/country/' + country.ccn3"
+      ></app-country>
+      <!-- *ngIf="country.name.common.toLowerCase().includes(searchText)" -->
+    </ng-container>
+  </div>
+  <ng-template #noCountry>
+    <h1 [ngClass]="{ 'dark-mode': darkMode }">No such Country found</h1>
+  </ng-template>
+</div>

@@ -1,0 +1,13 @@
+<div class="country-section " [ngClass]="{'country-light-mode':!darkMode,'country-dark-mode':darkMode}">
+  <div class="flag-section">
+    <img src="{{ country.flags.svg }}" alt="flag-img" />
+  </div>
+  <div class="country-info-section">
+    <h3>{{ country.name.common }}</h3>
+    <p>
+      <strong>Population: </strong> {{ country.population.toLocaleString() }}
+    </p>
+    <p><strong>Region: </strong> {{ country.region }}</p>
+    <p><strong>Capital: </strong> {{ country.capital || "NA" }}</p>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="filter-search">
+  <div>
+    <div class="input-container" [ngClass]="{'dark-mode':darkMode,'light-mode':!darkMode}">
+      <div class="search-icon-section">
+        <i class="fas fa-search"> </i>
+      </div>
+      <input
+        type="text"
+        placeholder="Search for a country...
+         "
+        [(ngModel)]="searchInput"
+        (input)="onSearchTextChanged()"
+        [ngClass]="{'dark-mode':darkMode}"
+      />
+    </div>
+    <div class="region-section" [ngClass]="{'dark-mode':darkMode,'light-mode':!darkMode}">
+      <select name="" (change)="setRegionText()" [(ngModel)]="regionText" [ngClass]="{'dark-mode':darkMode}" >
+        <option value="" [ngClass]="{'dark-mode':darkMode}">Filter By Region</option>
+        <option *ngFor="let region of regions" value="{{ region }}" [ngClass]="{'dark-mode':darkMode}">
+          {{ region }}
+        </option>
+      </select>
+    </div>
+    <div class="subregion-section" [ngClass]="{'dark-mode':darkMode,'light-mode':!darkMode}"> 
+      <select [(ngModel)]="subregionText" (change)="setSubregionText()" [ngClass]="{'dark-mode':darkMode}">
+        <option value="" [ngClass]="{'dark-mode':darkMode}">Filter By Sub-Region</option>
+        <option value="{{ subregion }}" *ngFor="let subregion of subregion" [ngClass]="{'dark-mode':darkMode}">
+          {{ subregion }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div>
+    <h3 class="sortByText"  [ngClass]="{'dark-mode':darkMode}">Sort By</h3>
+    <div class="sort-options-section" [ngClass]="{'dark-mode':darkMode,'light-mode':!darkMode}">
+      <select [(ngModel)]="sortTypeText" (change)="setSortTypes()" [ngClass]="{'dark-mode':darkMode}">
+        <option value="" [ngClass]="{'dark-mode':darkMode}">Sort Type</option>
+        <option value="area" [ngClass]="{'dark-mode':darkMode}">Area</option>
+        <option value="population" [ngClass]="{'dark-mode':darkMode}">Population</option>
+      </select>
+    </div>
+    <div class="sort-type-section" [ngClass]="{'dark-mode':darkMode,'light-mode':!darkMode}">
+      <select [(ngModel)]="sortOptionText" (change)="setSortOptions()" [ngClass]="{'dark-mode':darkMode}">
+        <option value="ascending" [ngClass]="{'dark-mode':darkMode}">Ascending</option>
+        <option value="descending" [ngClass]="{'dark-mode':darkMode}">Descending</option>
+      </select>
+    </div>
+  </div>
+</div>

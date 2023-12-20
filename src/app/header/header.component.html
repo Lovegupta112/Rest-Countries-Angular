@@ -1,0 +1,7 @@
+<header class="header-light-mode" [ngClass]="{'header-dark-mode':darkMode}">
+  <div class="logo">Where in the world?</div>
+  <div class="dark-mode-section" (click)="changeTheme()">
+    <i class="far fa-moon"></i>
+   {{darkMode?'LightMode':'DarkMode'}} 
+  </div>
+</header>
